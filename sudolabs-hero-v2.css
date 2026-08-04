@@ -2,7 +2,7 @@
    To change the carpet, upload your image to /assets/ and update only the URL below. */
 
 :root {
-  --hero-carpet-image: url('/assets/sudolabs-carpet-placeholder.svg');
+  --hero-carpet-image: url('/assets/rugs.jpg');
 }
 
 .studio-hero-grid {
