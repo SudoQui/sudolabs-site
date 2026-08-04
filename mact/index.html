@@ -3,875 +3,142 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#183c32">
+  <meta name="theme-color" content="#075c4c">
   <title>Muslims ACT | Muslim life in Canberra, in one place</title>
   <meta name="description" content="Muslims ACT is a free community app helping people discover halal food, prayer places, events and Muslim community information across Canberra and the ACT.">
-  <link rel="stylesheet" href="/styles.css">
-  <style>
-    :root {
-      --mact-green: #244f42;
-      --mact-green-dark: #183c32;
-      --mact-gold: #c59a4a;
-      --mact-blue: #245f74;
-      --mact-terracotta: #a9553d;
-      --mact-cream: #f7f1e7;
-      --mact-paper: #fffdf8;
-      --mact-muted: #5f6e67;
-      --mact-line: #dfd8ca;
-      --mact-shadow: 0 22px 60px rgba(23, 33, 29, 0.11);
-    }
-
-    body {
-      background:
-        radial-gradient(circle at 8% 0%, rgba(197, 154, 74, 0.17), transparent 30rem),
-        radial-gradient(circle at 93% 18%, rgba(36, 95, 116, 0.09), transparent 26rem),
-        var(--mact-cream);
-    }
-
-    .mact-header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      border-bottom: 1px solid rgba(223, 216, 202, 0.86);
-      background: rgba(247, 241, 231, 0.93);
-      backdrop-filter: blur(16px);
-    }
-
-    .mact-nav {
-      min-height: 76px;
-    }
-
-    .mact-mark {
-      position: relative;
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-      border-radius: 13px;
-      background: var(--mact-green);
-      box-shadow: 0 9px 24px rgba(36, 79, 66, 0.24);
-    }
-
-    .mact-mark::before,
-    .mact-mark::after {
-      content: "";
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.34);
-      transform: rotate(45deg);
-    }
-
-    .mact-mark::after {
-      transform: rotate(0deg);
-    }
-
-    .mact-brand-copy {
-      display: grid;
-      line-height: 1.05;
-    }
-
-    .mact-brand-copy strong {
-      font-size: 1rem;
-    }
-
-    .mact-brand-copy small {
-      margin-top: 5px;
-      color: var(--mact-muted);
-      font-size: 0.72rem;
-      font-weight: 700;
-    }
-
-    .mact-nav .nav-links a {
-      font-weight: 700;
-    }
-
-    .mact-hero {
-      position: relative;
-      overflow: hidden;
-      padding: clamp(64px, 10vw, 116px) 0 76px;
-    }
-
-    .mact-hero::after {
-      content: "";
-      position: absolute;
-      top: 60px;
-      right: -120px;
-      width: 410px;
-      height: 410px;
-      border: 1px solid rgba(197, 154, 74, 0.18);
-      border-radius: 90px;
-      transform: rotate(22deg);
-      box-shadow: 0 0 0 38px rgba(197, 154, 74, 0.04);
-      pointer-events: none;
-    }
-
-    .hero-grid {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
-      align-items: center;
-      gap: clamp(42px, 8vw, 90px);
-    }
-
-    .launch-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 8px 12px;
-      border: 1px solid rgba(36, 79, 66, 0.18);
-      border-radius: 999px;
-      background: rgba(255, 253, 248, 0.76);
-      color: var(--mact-green-dark);
-      font-size: 0.82rem;
-      font-weight: 800;
-    }
-
-    .launch-pill::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--mact-gold);
-      box-shadow: 0 0 0 5px rgba(197, 154, 74, 0.15);
-    }
-
-    .mact-hero h1 {
-      max-width: 780px;
-      margin: 22px 0 22px;
-      font-size: clamp(3.1rem, 7.4vw, 6.2rem);
-      line-height: 0.99;
-      letter-spacing: -0.06em;
-    }
-
-    .mact-hero h1 span {
-      color: var(--mact-green);
-    }
-
-    .mact-hero .lead {
-      margin: 0;
-      max-width: 700px;
-      font-size: clamp(1.08rem, 2vw, 1.35rem);
-    }
-
-    .hero-notes {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 18px;
-      margin-top: 24px;
-      color: #425149;
-      font-size: 0.92rem;
-      font-weight: 700;
-    }
-
-    .hero-notes span {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-    }
-
-    .hero-notes span::before {
-      content: "";
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--mact-gold);
-    }
-
-    .button.gold {
-      border-color: var(--mact-gold);
-      background: var(--mact-gold);
-      color: #19221c;
-    }
-
-    .button.gold:hover {
-      border-color: #b3863d;
-      background: #b3863d;
-      color: #19221c;
-    }
-
-    .preview-wrap {
-      position: relative;
-      display: grid;
-      place-items: center;
-      min-height: 540px;
-    }
-
-    .preview-wrap::before {
-      content: "";
-      position: absolute;
-      width: 440px;
-      height: 440px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(36, 79, 66, 0.14), transparent 68%);
-    }
-
-    .phone {
-      position: relative;
-      width: min(315px, 86vw);
-      padding: 12px;
-      border-radius: 43px;
-      background: #17211d;
-      box-shadow: 0 34px 82px rgba(23, 33, 29, 0.26);
-      transform: rotate(2deg);
-    }
-
-    .phone-screen {
-      min-height: 548px;
-      overflow: hidden;
-      border-radius: 33px;
-      background:
-        repeating-linear-gradient(45deg, transparent 0 19px, rgba(36, 79, 66, 0.03) 19px 20px),
-        var(--mact-cream);
-    }
-
-    .phone-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 23px 19px 17px;
-      font-weight: 900;
-    }
-
-    .phone-logo {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-    }
-
-    .phone-logo span:first-child {
-      width: 31px;
-      height: 31px;
-      display: grid;
-      place-items: center;
-      border-radius: 10px;
-      background: var(--mact-green);
-      color: white;
-      font-size: 0.68rem;
-    }
-
-    .phone-map {
-      position: relative;
-      height: 212px;
-      margin: 0 13px;
-      overflow: hidden;
-      border: 1px solid rgba(36, 79, 66, 0.12);
-      border-radius: 23px;
-      background:
-        linear-gradient(31deg, transparent 48%, rgba(36, 79, 66, 0.1) 49%, rgba(36, 79, 66, 0.1) 51%, transparent 52%),
-        linear-gradient(121deg, transparent 43%, rgba(36, 95, 116, 0.09) 44%, rgba(36, 95, 116, 0.09) 46%, transparent 47%),
-        #e9e3d5;
-    }
-
-    .phone-map::after {
-      content: "";
-      position: absolute;
-      right: -20px;
-      bottom: -42px;
-      width: 170px;
-      height: 150px;
-      border-radius: 50%;
-      background: rgba(36, 95, 116, 0.16);
-      transform: rotate(-18deg);
-    }
-
-    .pin {
-      position: absolute;
-      z-index: 2;
-      width: 25px;
-      height: 25px;
-      border: 4px solid white;
-      border-radius: 50% 50% 50% 10%;
-      background: var(--mact-terracotta);
-      box-shadow: 0 6px 17px rgba(23, 33, 29, 0.16);
-      transform: rotate(-45deg);
-    }
-
-    .pin::after {
-      content: "";
-      position: absolute;
-      inset: 6px;
-      border-radius: 50%;
-      background: white;
-    }
-
-    .pin.one { top: 42px; left: 60px; }
-    .pin.two { top: 101px; left: 145px; background: var(--mact-green); }
-    .pin.three { top: 61px; right: 47px; background: var(--mact-gold); }
-
-    .phone-card {
-      position: relative;
-      z-index: 3;
-      margin: -28px 25px 0;
-      padding: 18px;
-      border: 1px solid var(--mact-line);
-      border-radius: 19px;
-      background: rgba(255, 253, 248, 0.98);
-      box-shadow: 0 16px 34px rgba(23, 33, 29, 0.12);
-    }
-
-    .phone-card small {
-      color: var(--mact-terracotta);
-      font-size: 0.67rem;
-      font-weight: 900;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .phone-card h3 {
-      margin: 7px 0 6px;
-      font-size: 1.02rem;
-    }
-
-    .phone-card p {
-      margin: 0;
-      color: var(--mact-muted);
-      font-size: 0.78rem;
-      line-height: 1.45;
-    }
-
-    .mode-list {
-      display: grid;
-      gap: 9px;
-      padding: 16px 17px 23px;
-    }
-
-    .mode-row {
-      display: grid;
-      grid-template-columns: 36px 1fr auto;
-      align-items: center;
-      gap: 11px;
-      padding: 11px 12px;
-      border: 1px solid rgba(223, 216, 202, 0.88);
-      border-radius: 14px;
-      background: rgba(255, 253, 248, 0.78);
-    }
-
-    .mode-icon {
-      width: 36px;
-      height: 36px;
-      display: grid;
-      place-items: center;
-      border-radius: 11px;
-      background: var(--mact-green);
-      color: white;
-      font-size: 0.8rem;
-      font-weight: 900;
-    }
-
-    .mode-icon.prayer { background: var(--mact-blue); }
-    .mode-icon.community { background: var(--mact-terracotta); }
-
-    .mode-row strong,
-    .mode-row small {
-      display: block;
-    }
-
-    .mode-row strong {
-      font-size: 0.84rem;
-    }
-
-    .mode-row small {
-      color: var(--mact-muted);
-      font-size: 0.67rem;
-    }
-
-    .mode-row b {
-      color: var(--mact-gold);
-      font-size: 1.2rem;
-    }
-
-    .trust-strip {
-      border-top: 1px solid var(--mact-line);
-      border-bottom: 1px solid var(--mact-line);
-      background: rgba(255, 253, 248, 0.58);
-    }
-
-    .trust-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    .trust-item {
-      padding: 24px;
-      text-align: center;
-    }
-
-    .trust-item + .trust-item {
-      border-left: 1px solid var(--mact-line);
-    }
-
-    .trust-item strong,
-    .trust-item span {
-      display: block;
-    }
-
-    .trust-item strong {
-      color: var(--mact-green-dark);
-      font-size: 1.04rem;
-    }
-
-    .trust-item span {
-      margin-top: 3px;
-      color: var(--mact-muted);
-      font-size: 0.86rem;
-    }
-
-    .mact-section {
-      padding: clamp(72px, 10vw, 116px) 0;
-    }
-
-    .section-heading {
-      max-width: 780px;
-      margin-bottom: 38px;
-    }
-
-    .section-heading h2 {
-      margin: 12px 0 16px;
-      font-size: clamp(2.25rem, 5vw, 4.2rem);
-    }
-
-    .section-heading p {
-      margin: 0;
-      color: var(--mact-muted);
-      font-size: 1.08rem;
-    }
-
-    .mission-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
-      align-items: start;
-      gap: clamp(36px, 8vw, 92px);
-    }
-
-    .mission-copy {
-      position: sticky;
-      top: 112px;
-    }
-
-    .mission-copy h2 {
-      margin: 13px 0 19px;
-      font-size: clamp(2.4rem, 5vw, 4.35rem);
-    }
-
-    .mission-copy p {
-      color: var(--mact-muted);
-      font-size: 1.08rem;
-    }
-
-    .mission-cards {
-      display: grid;
-      gap: 16px;
-    }
-
-    .mission-card {
-      display: grid;
-      grid-template-columns: 54px 1fr;
-      gap: 17px;
-      padding: 24px;
-      border: 1px solid var(--mact-line);
-      border-radius: 21px;
-      background: rgba(255, 253, 248, 0.79);
-      box-shadow: 0 12px 35px rgba(23, 33, 29, 0.055);
-    }
-
-    .mission-card > span {
-      width: 54px;
-      height: 54px;
-      display: grid;
-      place-items: center;
-      border-radius: 17px;
-      background: rgba(36, 79, 66, 0.09);
-      color: var(--mact-green);
-      font-weight: 900;
-    }
-
-    .mission-card h3 {
-      margin: 2px 0 8px;
-      font-size: 1.2rem;
-    }
-
-    .mission-card p {
-      margin: 0;
-      color: var(--mact-muted);
-    }
-
-    .offer-section {
-      background: var(--mact-green-dark);
-      color: white;
-    }
-
-    .offer-section .eyebrow {
-      color: #e6c57f;
-    }
-
-    .offer-section .section-heading p {
-      color: rgba(255, 255, 255, 0.72);
-    }
-
-    .offer-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .offer-card {
-      min-height: 355px;
-      padding: 28px;
-      border: 1px solid rgba(255, 255, 255, 0.13);
-      border-radius: 24px;
-      background: rgba(255, 255, 255, 0.065);
-    }
-
-    .offer-number {
-      width: 52px;
-      height: 52px;
-      display: grid;
-      place-items: center;
-      border-radius: 16px;
-      background: rgba(230, 197, 127, 0.14);
-      color: #f2d99f;
-      font-weight: 900;
-    }
-
-    .offer-card h3 {
-      margin: 24px 0 12px;
-      font-size: 1.55rem;
-    }
-
-    .offer-card p {
-      color: rgba(255, 255, 255, 0.72);
-    }
-
-    .feature-list {
-      display: grid;
-      gap: 9px;
-      margin: 22px 0 0;
-      padding: 0;
-      list-style: none;
-      color: rgba(255, 255, 255, 0.88);
-      font-size: 0.9rem;
-    }
-
-    .feature-list li {
-      position: relative;
-      padding-left: 18px;
-    }
-
-    .feature-list li::before {
-      content: "";
-      position: absolute;
-      top: 0.67em;
-      left: 0;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #e6c57f;
-    }
-
-    .principles-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-    }
-
-    .principle {
-      padding: 24px 21px;
-      border-top: 3px solid var(--mact-gold);
-      border-radius: 0 0 18px 18px;
-      background: rgba(255, 253, 248, 0.7);
-    }
-
-    .principle h3 {
-      margin: 0 0 9px;
-      font-size: 1.08rem;
-    }
-
-    .principle p {
-      margin: 0;
-      color: var(--mact-muted);
-      font-size: 0.92rem;
-    }
-
-    .support-panel {
-      padding: clamp(30px, 6vw, 68px);
-      border: 1px solid rgba(36, 79, 66, 0.16);
-      border-radius: 30px;
-      background: linear-gradient(135deg, rgba(255, 253, 248, 0.96), rgba(241, 231, 209, 0.95));
-      box-shadow: var(--mact-shadow);
-    }
-
-    .support-layout {
-      display: grid;
-      grid-template-columns: 0.85fr 1.15fr;
-      gap: clamp(32px, 7vw, 76px);
-    }
-
-    .support-copy h2 {
-      margin: 12px 0 17px;
-      font-size: clamp(2.25rem, 5vw, 4rem);
-    }
-
-    .support-copy p {
-      color: var(--mact-muted);
-    }
-
-    .support-options {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-    }
-
-    .support-option {
-      padding: 20px;
-      border: 1px solid rgba(36, 79, 66, 0.13);
-      border-radius: 18px;
-      background: rgba(255, 253, 248, 0.74);
-    }
-
-    .support-option strong,
-    .support-option span {
-      display: block;
-    }
-
-    .support-option strong {
-      margin-bottom: 6px;
-      color: var(--mact-green-dark);
-    }
-
-    .support-option span {
-      color: var(--mact-muted);
-      font-size: 0.88rem;
-    }
-
-    .contact-band {
-      padding: 0 0 clamp(80px, 10vw, 120px);
-    }
-
-    .contact-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 28px;
-      padding: 34px 36px;
-      border-radius: 23px;
-      background: var(--mact-terracotta);
-      color: white;
-    }
-
-    .contact-inner h2 {
-      margin: 0 0 7px;
-      font-size: clamp(1.65rem, 3.5vw, 2.6rem);
-    }
-
-    .contact-inner p {
-      margin: 0;
-      color: rgba(255, 255, 255, 0.8);
-    }
-
-    .contact-inner .button {
-      flex: 0 0 auto;
-      border-color: white;
-      background: white;
-      color: var(--mact-terracotta);
-    }
-
-    .mact-footer {
-      background: #132d26;
-      color: rgba(255, 255, 255, 0.7);
-    }
-
-    .mact-footer a {
-      color: rgba(255, 255, 255, 0.88);
-    }
-
-    @media (max-width: 920px) {
-      .hero-grid,
-      .mission-layout,
-      .support-layout {
-        grid-template-columns: 1fr;
-      }
-
-      .mission-copy {
-        position: static;
-      }
-
-      .offer-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .offer-card {
-        min-height: auto;
-      }
-
-      .principles-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 700px) {
-      .mact-header {
-        position: static;
-      }
-
-      .mact-nav {
-        flex-direction: row;
-        align-items: center;
-      }
-
-      .mact-nav .nav-links {
-        display: none;
-      }
-
-      .mact-hero {
-        padding-top: 50px;
-      }
-
-      .mact-hero h1 {
-        font-size: clamp(3rem, 15vw, 4.8rem);
-      }
-
-      .trust-grid,
-      .principles-grid,
-      .support-options {
-        grid-template-columns: 1fr;
-      }
-
-      .trust-item + .trust-item {
-        border-top: 1px solid var(--mact-line);
-        border-left: 0;
-      }
-
-      .contact-inner {
-        align-items: flex-start;
-        flex-direction: column;
-        padding: 27px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="/mact/mact.css">
 </head>
-<body>
+<body class="mact-page">
   <header class="mact-header">
-    <div class="shell nav mact-nav">
-      <a class="brand" href="/mact/" aria-label="Muslims ACT home">
-        <span class="mact-mark" aria-hidden="true"></span>
+    <div class="mact-shell mact-nav">
+      <a class="mact-brand" href="/mact/" aria-label="Muslims ACT home">
+        <span class="mact-brand-mark" aria-hidden="true"></span>
         <span class="mact-brand-copy">
           <strong>Muslims ACT</strong>
           <small>A SudoLabs community project</small>
         </span>
       </a>
-      <nav class="nav-links" aria-label="Muslims ACT navigation">
+
+      <nav class="mact-links" aria-label="Muslims ACT navigation">
         <a href="#mission">Mission</a>
         <a href="#offer">What we offer</a>
         <a href="#support">Support MACT</a>
         <a href="/mact/privacy/">Privacy</a>
         <a href="mailto:sudolabs@outlook.com.au?subject=Muslims%20ACT%20enquiry">Contact</a>
+        <a class="studio-link" href="/">SudoLabs</a>
       </nav>
     </div>
   </header>
 
   <main>
     <section class="mact-hero">
-      <div class="shell hero-grid">
-        <div>
-          <div class="launch-pill">Launching soon on iOS and Android</div>
-          <h1>Muslim life in Canberra, <span>in one place.</span></h1>
-          <p class="lead">
-            Muslims ACT is a free community app helping people find halal food, prayer places,
-            local events and useful Muslim community information across Canberra and the ACT.
-          </p>
-          <div class="hero-notes" aria-label="Project highlights">
-            <span>Canberra focused</span>
-            <span>Free to use</span>
-            <span>Community informed</span>
-          </div>
-          <div class="actions">
-            <a class="button" href="#offer">Explore what is coming</a>
-            <a class="button gold" href="#support">Support the project</a>
+      <div class="mact-hero-grid">
+        <div class="mact-hero-copy">
+          <div class="mact-hero-inner">
+            <div class="mact-launch">Launching soon on iOS and Android</div>
+            <h1>Muslim life in Canberra, <em>in one place.</em></h1>
+            <p class="mact-lead">
+              Muslims ACT is a free community app helping people find halal food, prayer places,
+              local events and useful Muslim community information across Canberra and the ACT.
+            </p>
+
+            <div class="mact-actions">
+              <a class="mact-button" href="#offer">Explore what is coming</a>
+              <a class="mact-button secondary" href="#support">Support the project</a>
+            </div>
+
+            <div class="mact-proof" aria-label="Muslims ACT highlights">
+              <span>Canberra focused</span>
+              <span>Free to use</span>
+              <span>Community informed</span>
+            </div>
           </div>
         </div>
 
-        <div class="preview-wrap" aria-label="Illustration of the Muslims ACT app">
-          <div class="phone">
-            <div class="phone-screen">
-              <div class="phone-top">
-                <div class="phone-logo"><span>MA</span><span>Muslims ACT</span></div>
-                <span aria-hidden="true">•••</span>
-              </div>
-              <div class="phone-map">
-                <span class="pin one" aria-hidden="true"></span>
-                <span class="pin two" aria-hidden="true"></span>
-                <span class="pin three" aria-hidden="true"></span>
-              </div>
-              <div class="phone-card">
-                <small>Nearby in Canberra</small>
-                <h3>Find what you need, faster</h3>
-                <p>Local places and community information presented clearly on a map and in a list.</p>
-              </div>
-              <div class="mode-list">
-                <div class="mode-row"><span class="mode-icon">F</span><span><strong>Food</strong><small>Halal restaurants and shops</small></span><b>›</b></div>
-                <div class="mode-row"><span class="mode-icon prayer">P</span><span><strong>Prayer</strong><small>Mosques, musallahs and facilities</small></span><b>›</b></div>
-                <div class="mode-row"><span class="mode-icon community">C</span><span><strong>Community</strong><small>Events and announcements</small></span><b>›</b></div>
-              </div>
-            </div>
+        <div class="mact-hero-art" aria-label="Muslims ACT floral identity">
+          <div class="mact-app-card">
+            <div class="mact-app-mark">MA</div>
+            <strong>Muslims ACT</strong>
+            <p>Halal food, prayer places and community information designed around everyday Muslim life in Canberra.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="trust-strip" aria-label="Project commitments">
-      <div class="shell trust-grid">
-        <div class="trust-item"><strong>Local by design</strong><span>Built around Canberra and ACT needs</span></div>
-        <div class="trust-item"><strong>Useful information</strong><span>Focused on practical everyday decisions</span></div>
-        <div class="trust-item"><strong>Community supported</strong><span>Improved through local knowledge and feedback</span></div>
+    <section class="mact-band" aria-label="Project commitments">
+      <div class="mact-shell mact-band-grid">
+        <div class="mact-band-item">
+          <strong>Local by design</strong>
+          <span>Built around Canberra and ACT needs</span>
+        </div>
+        <div class="mact-band-item">
+          <strong>Useful information</strong>
+          <span>Focused on practical everyday decisions</span>
+        </div>
+        <div class="mact-band-item">
+          <strong>Community supported</strong>
+          <span>Improved through local knowledge and feedback</span>
+        </div>
       </div>
     </section>
 
     <section class="mact-section" id="mission">
-      <div class="shell mission-layout">
-        <div class="mission-copy">
-          <div class="eyebrow">Our mission</div>
+      <div class="mact-shell mission-grid">
+        <div class="mission-intro">
+          <div class="mact-kicker">Our mission</div>
           <h2>Make local Muslim life easier to navigate.</h2>
           <p>
-            Finding reliable local information can take time. Details are often scattered across social media,
-            websites, group chats and word of mouth. Muslims ACT brings that information together in one simple place
-            designed for the Canberra Muslim community.
+            Finding reliable local information can take time. Details are often scattered across
+            social media, websites, group chats and word of mouth. Muslims ACT brings that information
+            together in one clear place designed for the Canberra Muslim community.
           </p>
         </div>
 
-        <div class="mission-cards">
+        <div class="mission-list">
           <article class="mission-card">
-            <span>01</span>
-            <div><h3>Connect people with local places</h3><p>Help residents, students, families and visitors discover nearby food, prayer and community services.</p></div>
+            <span class="mission-number">01</span>
+            <div>
+              <h3>Connect people with local places</h3>
+              <p>Help residents, students, families and visitors discover nearby food, prayer and community services.</p>
+            </div>
           </article>
+
           <article class="mission-card">
-            <span>02</span>
-            <div><h3>Make information clearer</h3><p>Present important details consistently so people can compare options and make informed choices.</p></div>
+            <span class="mission-number">02</span>
+            <div>
+              <h3>Make information clearer</h3>
+              <p>Present important details consistently so people can compare options and make informed choices.</p>
+            </div>
           </article>
+
           <article class="mission-card">
-            <span>03</span>
-            <div><h3>Strengthen community awareness</h3><p>Give local organisations and community members another way to share events, updates and useful information.</p></div>
+            <span class="mission-number">03</span>
+            <div>
+              <h3>Strengthen community awareness</h3>
+              <p>Give local organisations and community members another way to share events, updates and useful information.</p>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
     <section class="mact-section offer-section" id="offer">
-      <div class="shell">
-        <div class="section-heading">
-          <div class="eyebrow">What Muslims ACT offers</div>
-          <h2>Three everyday needs, one local app.</h2>
-          <p>MACT is being built around the information Canberra Muslims commonly need while eating out, planning prayer and staying connected.</p>
+      <div class="mact-shell">
+        <div class="mact-section-head">
+          <div class="mact-kicker">What Muslims ACT offers</div>
+          <h2 class="mact-section-title">Three everyday needs, one local app.</h2>
+          <p class="mact-section-copy">
+            MACT is being built around the information Canberra Muslims commonly need while eating out,
+            planning prayer and staying connected with the community.
+          </p>
         </div>
 
         <div class="offer-grid">
           <article class="offer-card">
-            <div class="offer-number">01</div>
+            <div class="offer-icon">01</div>
             <h3>Halal food discovery</h3>
             <p>Explore local restaurants, cafés, dessert shops, butchers and grocery stores with useful details in one place.</p>
-            <ul class="feature-list">
+            <ul class="offer-list">
               <li>Map and list based discovery</li>
               <li>Search and practical filters</li>
               <li>Halal information and confidence context</li>
@@ -880,10 +147,10 @@
           </article>
 
           <article class="offer-card">
-            <div class="offer-number">02</div>
+            <div class="offer-icon">02</div>
             <h3>Prayer places</h3>
             <p>Find mosques and musallahs across Canberra, with the details people need before they travel.</p>
-            <ul class="feature-list">
+            <ul class="offer-list">
               <li>Nearby prayer locations</li>
               <li>Daily prayer and Jumuah information</li>
               <li>Facilities and accessibility details</li>
@@ -892,10 +159,10 @@
           </article>
 
           <article class="offer-card">
-            <div class="offer-number">03</div>
+            <div class="offer-icon">03</div>
             <h3>Community information</h3>
             <p>Stay aware of local events and announcements without needing to search through several channels.</p>
-            <ul class="feature-list">
+            <ul class="offer-list">
               <li>Classes, lectures and gatherings</li>
               <li>Community announcements</li>
               <li>Event locations and times</li>
@@ -907,63 +174,115 @@
     </section>
 
     <section class="mact-section">
-      <div class="shell">
-        <div class="section-heading">
-          <div class="eyebrow">How we are building it</div>
-          <h2>Useful first. Honest about the details.</h2>
-          <p>Muslims ACT is an independent community technology project. Information is reviewed and sourced where possible, with clear context around important details.</p>
+      <div class="mact-shell">
+        <div class="mact-section-head">
+          <div class="mact-kicker">How we are building it</div>
+          <h2 class="mact-section-title">Useful first. Honest about the details.</h2>
+          <p class="mact-section-copy">
+            Muslims ACT is an independent community technology project. Information is reviewed and sourced where possible,
+            with clear context around important details and room for the community to help improve what is known.
+          </p>
         </div>
 
-        <div class="principles-grid">
-          <article class="principle"><h3>Canberra first</h3><p>A focused local product rather than a broad directory with limited ACT detail.</p></article>
-          <article class="principle"><h3>Clear context</h3><p>Important information should show what is known, where it came from and what still needs confirmation.</p></article>
-          <article class="principle"><h3>Community feedback</h3><p>Local knowledge helps identify missing places, outdated details and upcoming events.</p></article>
-          <article class="principle"><h3>Respectful technology</h3><p>The product is built to be simple, accessible and mindful of user privacy.</p></article>
+        <div class="values-grid">
+          <article class="value-card">
+            <span>01</span>
+            <h3>Canberra first</h3>
+            <p>A focused local product rather than a broad directory with limited ACT detail.</p>
+          </article>
+
+          <article class="value-card">
+            <span>02</span>
+            <h3>Clear context</h3>
+            <p>Important information should show what is known, where it came from and what still needs confirmation.</p>
+          </article>
+
+          <article class="value-card">
+            <span>03</span>
+            <h3>Community feedback</h3>
+            <p>Local knowledge helps identify missing places, outdated details and upcoming events.</p>
+          </article>
+
+          <article class="value-card">
+            <span>04</span>
+            <h3>Respectful technology</h3>
+            <p>The product is built to be simple, accessible and mindful of user privacy.</p>
+          </article>
         </div>
       </div>
     </section>
 
     <section class="mact-section" id="support">
-      <div class="shell">
+      <div class="mact-shell">
         <div class="support-panel">
-          <div class="support-layout">
+          <div class="support-grid">
             <div class="support-copy">
-              <div class="eyebrow">Support Muslims ACT</div>
+              <div class="mact-kicker">Support Muslims ACT</div>
               <h2>Help make the app more useful for everyone.</h2>
-              <p>MACT grows through accurate local information, community feedback and people sharing the project. You do not need technical experience to contribute.</p>
-              <div class="actions"><a class="button" href="mailto:sudolabs@outlook.com.au?subject=Supporting%20Muslims%20ACT">Get in touch</a></div>
+              <p>
+                MACT grows through accurate local information, community feedback and people sharing the project.
+                You do not need technical experience to contribute.
+              </p>
+              <div class="mact-actions">
+                <a class="mact-button" href="mailto:sudolabs@outlook.com.au?subject=Supporting%20Muslims%20ACT">Get in touch</a>
+              </div>
             </div>
 
             <div class="support-options">
-              <div class="support-option"><strong>Share the project</strong><span>Tell friends, family, community groups and local organisations about the upcoming launch.</span></div>
-              <div class="support-option"><strong>Suggest information</strong><span>Send a missing place, event, correction or useful local detail for review.</span></div>
-              <div class="support-option"><strong>Represent a business</strong><span>Help us confirm your business details so customers receive clearer information.</span></div>
-              <div class="support-option"><strong>Test and give feedback</strong><span>Try the app during testing and explain what would make it easier or more useful.</span></div>
-              <div class="support-option"><strong>Organise community events</strong><span>Share classes, lectures, gatherings and announcements for possible inclusion.</span></div>
-              <div class="support-option"><strong>Offer specialist help</strong><span>Contribute design, accessibility, community, legal, data or technical experience.</span></div>
+              <div class="support-option">
+                <strong>Share the project</strong>
+                <span>Tell friends, family, community groups and local organisations about the upcoming launch.</span>
+              </div>
+
+              <div class="support-option">
+                <strong>Suggest information</strong>
+                <span>Send a missing place, event, correction or useful local detail for review.</span>
+              </div>
+
+              <div class="support-option">
+                <strong>Represent a business</strong>
+                <span>Help us confirm your business details so customers receive clearer information.</span>
+              </div>
+
+              <div class="support-option">
+                <strong>Test and give feedback</strong>
+                <span>Try the app during testing and explain what would make it easier or more useful.</span>
+              </div>
+
+              <div class="support-option">
+                <strong>Organise community events</strong>
+                <span>Share classes, lectures, gatherings and announcements for possible inclusion.</span>
+              </div>
+
+              <div class="support-option">
+                <strong>Offer specialist help</strong>
+                <span>Contribute design, accessibility, community, legal, data or technical experience.</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="contact-band">
-      <div class="shell">
-        <div class="contact-inner">
-          <div>
-            <h2>Know something Canberra Muslims should know?</h2>
-            <p>Send us a place, event, correction, partnership idea or piece of feedback.</p>
+    <section class="mact-cta-wrap">
+      <div class="mact-shell">
+        <div class="mact-cta">
+          <div class="mact-cta-inner">
+            <div>
+              <h2>Know something Canberra Muslims should know?</h2>
+              <p>Send us a place, event, correction, partnership idea or piece of feedback.</p>
+            </div>
+            <a class="mact-button" href="mailto:sudolabs@outlook.com.au?subject=Muslims%20ACT%20community%20information">Contact Muslims ACT</a>
           </div>
-          <a class="button" href="mailto:sudolabs@outlook.com.au?subject=Muslims%20ACT%20community%20information">Contact Muslims ACT</a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer mact-footer">
-    <div class="shell footer-row">
+  <footer class="mact-footer">
+    <div class="mact-shell mact-footer-row">
       <span>© 2026 SudoLabs. Muslims ACT is built in Canberra, Australia.</span>
-      <span class="inline-links">
+      <span class="mact-footer-links">
         <a href="/">SudoLabs</a>
         <a href="/mact/privacy/">Privacy</a>
         <a href="/mact/data-deletion/">Data deletion</a>
