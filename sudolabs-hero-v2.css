@@ -1,0 +1,209 @@
+/* SudoLabs hero refinement
+   Persian carpet inspired composition with a higher brand and copy position. */
+
+.studio-hero-grid {
+  min-height: calc(100svh - 78px);
+  align-items: stretch;
+}
+
+.carpet-side {
+  position: relative;
+  min-height: calc(100svh - 78px);
+  display: block;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 50% 49%, rgba(193, 62, 48, 0.34) 0 17%, transparent 34%),
+    linear-gradient(180deg, #320f12 0%, #6d1c21 34%, #8a2528 58%, #431216 100%);
+}
+
+/* The older technical carpet SVG is replaced by a denser traditional rug field. */
+.carpet-pattern {
+  display: none;
+}
+
+.carpet-side::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 50% 50%, #d54435 0 7%, #a92e2c 7.3% 14%, transparent 14.5%),
+    conic-gradient(from 22.5deg at 50% 50%, transparent 0 5.5%, rgba(239, 214, 177, 0.86) 5.7% 7.1%, transparent 7.3% 18%, rgba(183, 138, 61, 0.82) 18.2% 20%, transparent 20.2% 30.5%, rgba(239, 214, 177, 0.78) 30.7% 32.2%, transparent 32.4% 43%, rgba(183, 138, 61, 0.82) 43.2% 45%, transparent 45.2% 55.5%, rgba(239, 214, 177, 0.78) 55.7% 57.1%, transparent 57.3% 68%, rgba(183, 138, 61, 0.82) 68.2% 70%, transparent 70.2% 80.5%, rgba(239, 214, 177, 0.78) 80.7% 82.1%, transparent 82.3% 93%, rgba(183, 138, 61, 0.82) 93.2% 95%, transparent 95.2%),
+    radial-gradient(ellipse at 50% 50%, transparent 0 24%, rgba(15, 24, 31, 0.9) 24.4% 37%, transparent 37.5%),
+    radial-gradient(circle at 18% 15%, rgba(33, 78, 99, 0.92) 0 10%, transparent 10.5%),
+    radial-gradient(circle at 82% 15%, rgba(33, 78, 99, 0.92) 0 10%, transparent 10.5%),
+    radial-gradient(circle at 18% 85%, rgba(33, 78, 99, 0.92) 0 10%, transparent 10.5%),
+    radial-gradient(circle at 82% 85%, rgba(33, 78, 99, 0.92) 0 10%, transparent 10.5%),
+    repeating-radial-gradient(circle at 50% 50%, transparent 0 43px, rgba(239, 214, 177, 0.12) 44px 46px, transparent 47px 88px),
+    repeating-linear-gradient(45deg, transparent 0 52px, rgba(239, 214, 177, 0.08) 53px 55px, transparent 56px 108px),
+    repeating-linear-gradient(-45deg, transparent 0 52px, rgba(183, 138, 61, 0.07) 53px 55px, transparent 56px 108px);
+  transform: scale(1.07);
+}
+
+.carpet-side::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  border: 10px solid #260b0d;
+  box-shadow:
+    inset 0 0 0 5px #b72827,
+    inset 0 0 0 12px #12090a,
+    inset 0 0 0 18px #d7b06a,
+    inset 0 0 0 23px #7b1f24,
+    inset 0 0 0 33px #111b22,
+    inset 0 0 0 39px #c03a2e,
+    inset 0 0 0 45px #e0c59a,
+    inset 0 0 0 50px #3b1114;
+}
+
+.carpet-overlay {
+  position: absolute;
+  inset: 50px;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.72;
+  background:
+    radial-gradient(ellipse at 50% 2%, rgba(33, 78, 99, 0.9) 0 11%, transparent 11.5%),
+    radial-gradient(ellipse at 50% 98%, rgba(33, 78, 99, 0.9) 0 11%, transparent 11.5%),
+    radial-gradient(circle at 8% 50%, rgba(11, 19, 26, 0.88) 0 16%, transparent 16.5%),
+    radial-gradient(circle at 92% 50%, rgba(11, 19, 26, 0.88) 0 16%, transparent 16.5%),
+    radial-gradient(circle at 50% 50%, transparent 0 31%, rgba(13, 15, 19, 0.72) 31.5% 45%, transparent 45.5%),
+    radial-gradient(circle at center, transparent 0 55%, rgba(25, 7, 9, 0.4) 78%, rgba(15, 5, 7, 0.72) 100%);
+}
+
+.hero-brand-lockup {
+  position: absolute;
+  top: 47%;
+  left: 50%;
+  z-index: 5;
+  width: min(72%, 560px);
+  padding: clamp(30px, 4.5vw, 50px) clamp(24px, 4vw, 48px) clamp(26px, 4vw, 42px);
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(243, 231, 210, 0.58);
+  outline: 1px solid rgba(183, 138, 61, 0.78);
+  outline-offset: 12px;
+  background: rgba(55, 12, 16, 0.78);
+  box-shadow: 0 32px 70px rgba(18, 4, 6, 0.46);
+  backdrop-filter: blur(8px);
+}
+
+.hero-brand-lockup::before,
+.hero-brand-lockup::after {
+  width: 24px;
+  height: 24px;
+}
+
+.hero-brand-mark {
+  width: 96px;
+  height: 96px;
+  margin-bottom: 16px;
+}
+
+.hero-brand-lockup h2 {
+  font-size: clamp(3rem, 5.4vw, 5.2rem);
+}
+
+.hero-brand-lockup p {
+  margin-top: 15px;
+  line-height: 1.45;
+}
+
+.hero-copy-side {
+  align-items: flex-start;
+  min-height: calc(100svh - 78px);
+}
+
+.hero-copy-inner {
+  width: min(100%, 720px);
+  margin: 0 auto;
+  padding: clamp(58px, 7vh, 82px) clamp(44px, 7vw, 96px) clamp(70px, 8vh, 100px);
+}
+
+.studio-hero h1 {
+  margin-top: 18px;
+  font-size: clamp(3.2rem, 5.8vw, 5.8rem);
+  line-height: 0.94;
+}
+
+.studio-lead {
+  max-width: 610px;
+}
+
+@media (max-width: 1100px) {
+  .hero-brand-lockup {
+    top: 46%;
+    width: min(78%, 520px);
+  }
+
+  .hero-copy-inner {
+    padding: 56px 44px 76px;
+  }
+
+  .studio-hero h1 {
+    font-size: clamp(3.05rem, 6.2vw, 5.25rem);
+  }
+}
+
+@media (max-width: 900px) {
+  .studio-hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .carpet-side {
+    min-height: 650px;
+  }
+
+  .hero-brand-lockup {
+    top: 48%;
+    width: min(76%, 520px);
+  }
+
+  .hero-copy-side {
+    min-height: auto;
+  }
+
+  .hero-copy-inner {
+    padding: 58px 28px 68px;
+  }
+}
+
+@media (max-width: 560px) {
+  .carpet-side {
+    min-height: 560px;
+  }
+
+  .carpet-side::after {
+    border-width: 7px;
+    box-shadow:
+      inset 0 0 0 4px #b72827,
+      inset 0 0 0 9px #12090a,
+      inset 0 0 0 14px #d7b06a,
+      inset 0 0 0 19px #7b1f24,
+      inset 0 0 0 25px #111b22,
+      inset 0 0 0 30px #c03a2e,
+      inset 0 0 0 35px #e0c59a;
+  }
+
+  .carpet-overlay {
+    inset: 36px;
+  }
+
+  .hero-brand-lockup {
+    width: calc(100% - 82px);
+    padding: 28px 18px 24px;
+    outline-offset: 8px;
+  }
+
+  .hero-brand-mark {
+    width: 80px;
+    height: 80px;
+  }
+
+  .hero-brand-lockup h2 {
+    font-size: clamp(2.8rem, 14vw, 4rem);
+  }
+}
