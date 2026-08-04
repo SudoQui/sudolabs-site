@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Muslims ACT floral placeholder</title>
+  <desc id="desc">A green, cream, turquoise and gold floral pattern for the Muslims ACT website.</desc>
+  <defs>
+    <radialGradient id="field" cx="50%" cy="42%" r="78%">
+      <stop offset="0" stop-color="#147660"/>
+      <stop offset="0.55" stop-color="#075c4c"/>
+      <stop offset="1" stop-color="#034036"/>
+    </radialGradient>
+    <pattern id="dots" width="52" height="52" patternUnits="userSpaceOnUse">
+      <circle cx="26" cy="26" r="2.2" fill="#d7ad52" opacity="0.28"/>
+    </pattern>
+    <g id="flower">
+      <circle r="68" fill="#f5ebd7" opacity="0.96"/>
+      <g fill="#3a9e9c" stroke="#f5ebd7" stroke-width="8">
+        <ellipse rx="22" ry="58" transform="rotate(0) translate(0 -34)"/>
+        <ellipse rx="22" ry="58" transform="rotate(45) translate(0 -34)"/>
+        <ellipse rx="22" ry="58" transform="rotate(90) translate(0 -34)"/>
+        <ellipse rx="22" ry="58" transform="rotate(135) translate(0 -34)"/>
+      </g>
+      <circle r="25" fill="#d7ad52" stroke="#f5ebd7" stroke-width="7"/>
+      <circle r="8" fill="#075c4c"/>
+    </g>
+    <g id="leaf">
+      <path d="M0 0 C24 -42 72 -42 94 0 C72 42 24 42 0 0Z" fill="#3a9e9c" stroke="#f5ebd7" stroke-width="6"/>
+      <path d="M14 0 H76" stroke="#075c4c" stroke-width="5" stroke-linecap="round"/>
+    </g>
+  </defs>
+
+  <rect width="1200" height="1200" fill="url(#field)"/>
+  <rect width="1200" height="1200" fill="url(#dots)"/>
+
+  <g fill="none" stroke="#f5ebd7" stroke-width="7" opacity="0.88">
+    <path d="M90 250 C260 80 420 80 600 250 C780 420 940 420 1110 250"/>
+    <path d="M90 950 C260 1120 420 1120 600 950 C780 780 940 780 1110 950"/>
+    <path d="M250 90 C80 260 80 420 250 600 C420 780 420 940 250 1110"/>
+    <path d="M950 90 C1120 260 1120 420 950 600 C780 780 780 940 950 1110"/>
+  </g>
+
+  <g fill="none" stroke="#d7ad52" stroke-width="4" opacity="0.75">
+    <circle cx="600" cy="600" r="420"/>
+    <circle cx="600" cy="600" r="340"/>
+    <rect x="360" y="360" width="480" height="480" transform="rotate(45 600 600)"/>
+  </g>
+
+  <use href="#flower" transform="translate(600 600) scale(1.65)"/>
+  <use href="#flower" transform="translate(215 215) scale(.72)"/>
+  <use href="#flower" transform="translate(985 215) scale(.72)"/>
+  <use href="#flower" transform="translate(215 985) scale(.72)"/>
+  <use href="#flower" transform="translate(985 985) scale(.72)"/>
+
+  <use href="#leaf" transform="translate(350 330) rotate(-38) scale(.9)"/>
+  <use href="#leaf" transform="translate(850 330) rotate(218) scale(.9)"/>
+  <use href="#leaf" transform="translate(350 870) rotate(38) scale(.9)"/>
+  <use href="#leaf" transform="translate(850 870) rotate(142) scale(.9)"/>
+
+  <g fill="#f5ebd7" opacity="0.9">
+    <circle cx="600" cy="140" r="9"/>
+    <circle cx="1060" cy="600" r="9"/>
+    <circle cx="600" cy="1060" r="9"/>
+    <circle cx="140" cy="600" r="9"/>
+  </g>
+
+  <rect x="24" y="24" width="1152" height="1152" rx="38" fill="none" stroke="#f5ebd7" stroke-width="8" opacity="0.8"/>
+  <rect x="48" y="48" width="1104" height="1104" rx="28" fill="none" stroke="#d7ad52" stroke-width="5" opacity="0.9"/>
+</svg>
